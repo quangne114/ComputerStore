@@ -1,0 +1,14 @@
+﻿@model Shop.Models.Product
+
+@{
+    ViewBag.Title = "SelectedProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<center>
+    <br>
+    <h2>Bạn chưa đặt sản phẩm nào cả T.T, vui lòng đặt sản phẩm trước khi thanh toán</h2>
+    <br>
+    <img src="~/Content/ImgLaptop/nocart.jpg">
+    <br>
+    @Html.ActionLink("Trở lại trang chủ","Index","Home")
+</center>

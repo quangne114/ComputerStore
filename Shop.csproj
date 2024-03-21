@@ -1,0 +1,979 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7DC917F0-FE1A-4190-99F8-8A91A6824321}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shop</RootNamespace>
+    <AssemblyName>Shop</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44331</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build.Framework, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Build.Framework.17.5.0\lib\net472\Microsoft.Build.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.2.2\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.2.2\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.2.2\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.2.2\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.2.2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\PCModel.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Asset IMG\laptop_banner1.jpg" />
+    <Content Include="Content\Asset IMG\laptop_banner2.jpg" />
+    <Content Include="Content\Asset IMG\laptop_bannerfull.jpg" />
+    <Content Include="Content\Asset IMG\laptop_full.jpg" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\ajax-loader.gif" />
+    <Content Include="Content\css\bootstrap-slider.css" />
+    <Content Include="Content\css\fonts\slick.svg" />
+    <Content Include="Content\css\ionicons.min.css" />
+    <Content Include="Content\css\jquery.fancybox.min.css" />
+    <Content Include="Content\css\owl.carousel.min.css" />
+    <Content Include="Content\css\owl.theme.default.min.css" />
+    <Content Include="Content\css\slick-theme.css" />
+    <Content Include="Content\css\slick.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\threesixty.css" />
+    <Content Include="Content\E-come_v1.0.0\documentation\assets\css\documenter_style.css" />
+    <Content Include="Content\E-come_v1.0.0\documentation\assets\css\img\info.png" />
+    <Content Include="Content\E-come_v1.0.0\documentation\assets\css\img\warning.png" />
+    <Content Include="Content\E-come_v1.0.0\documentation\assets\favicon.png" />
+    <Content Include="Content\E-come_v1.0.0\documentation\assets\images\logo.png" />
+    <Content Include="Content\E-come_v1.0.0\documentation\assets\js\google-code-prettify\prettify.css" />
+    <Content Include="Content\E-come_v1.0.0\documentation\assets\js\google-code-prettify\prettify.js" />
+    <Content Include="Content\E-come_v1.0.0\documentation\assets\js\jquery.easing.js" />
+    <Content Include="Content\E-come_v1.0.0\documentation\assets\js\jquery.js" />
+    <Content Include="Content\E-come_v1.0.0\documentation\assets\js\jquery.scrollTo.js" />
+    <Content Include="Content\E-come_v1.0.0\documentation\assets\js\script.js" />
+    <Content Include="Content\E-come_v1.0.0\documentation\index.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\360degree.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\404.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\aboutus.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\affilate.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\blog-single-post.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\blog-standar.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\blog_grid.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\bundle.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\cart.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\cat_fullwidth.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\cat_left_sidebar.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\cat_right_sidebar.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\checkout.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\commingsoon.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\contactus.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\ajax-loader.gif" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\bootstrap-slider.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\fonts\slick.svg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\ionicons.min.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\jquery.fancybox.min.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\owl.carousel.min.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\owl.theme.default.min.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\slick-theme.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\slick.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\style.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\threesixty.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\faq.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\feature_video.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\grouped.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\home1.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\home2.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\home3.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\home4.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\home5.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\404.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\about\about_1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\about\about_2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\about\about_3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\about\icon1.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\about\icon2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\about\icon3.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\about\team_1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\about\team_2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\about\team_3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\about\team_4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\b-product1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\b-product2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\b-product3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\b-product4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\b-product5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner-top.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h1_b1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h1_b2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h1_b3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h1_b4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h1_b5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h1_b6.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h1_b7.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h2_b1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h2_b2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h2_b3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h2_b4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h2_b5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h3_b1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h3_b2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h3_b3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h4_b1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h4_b2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h4_b3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h4_b4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h4_b5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h4_b6.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h5_b1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h5_b2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h5_b3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h5_b4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\banner\h5_b5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\ads.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\author1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\author2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\author3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\author4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\blog-banner.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\blog-cm-icon.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\blog_1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\blog_2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\blog_3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\blog_4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\blog_5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\blog_6.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\blog_7.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\blog_8.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\blog_9.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\h2_blog1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\h2_blog2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\h2_blog3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\insta_1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\insta_2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\insta_3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\insta_4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\insta_5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\insta_6.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\newsletter.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\post1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\post2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\post3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\post4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\quote.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\single-post.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\single-post2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\single-post3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\blog\single-post4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brand.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brandlogo1.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brandlogo2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brandlogo3.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brandlogo4.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brandlogo5.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brandlogo6.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brand_2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brand_3.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brand_4.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brand_5.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brand_7.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\brand_8.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\brand\sony_info.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\cart-w.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\cart1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\category\1.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\category\2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\category\3.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\category\4.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\category\5.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\category\6.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\checkoutpp.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\co-coupon.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\co-login.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\coupon-icon.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\cs.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\demo\demo1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\demo\demo2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\demo\demo3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\demo\demo4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\demo\demo5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\demo\demo6.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\f-bg.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\f-mail.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\f-phone.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\f-time.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\favicon.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\b-tele.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\b_credit.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\b_truck.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\credit-card.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\credit-card2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\g-credit.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\g-safety.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\g-tele.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\g-truck.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\hotline.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\safety.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\safety2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\telephone.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\truck.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\feature\truck2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\flash-deals.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\grid.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\grid2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\h3-bg.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-call.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-cart.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-cart2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-compare.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-diamond.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-eye.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-heart.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-heart2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-l.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-map.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-phone.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-ship.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-track.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon-user.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\iconbrand.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\iconbs.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon_1.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon_2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon_3.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon_4.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon_5.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon_6.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\icon_7.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\list.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\logo-w.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\logo.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\lookbook_1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\lookbook_2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\lookbook_3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\megamenu\cate1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\megamenu\cate2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\megamenu\cate3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\megamenu\cate4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\megamenu\cate5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\megamenu\cate6.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\megamenu\headphone-bg.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\megamenu\home-bg.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\megamenu\phone-bg.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\megamenu\tv-bg.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\o-banner.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\o-banner2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\o-banner3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\payment\american-express.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\payment\jcb.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\payment\mastercard.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\payment\paypal.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\payment\pp.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\payment\visa.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\payment\western-union.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\10.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\11.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\12.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\13.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\14.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\15.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\16.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\17.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\18.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\6.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\7.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\8.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product-360\9.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\anker.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\flycam.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\fujifilm.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\headphone.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\headphone2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\headphone3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\headphone4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\headphone5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\ipad.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\iphonex.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\logitech.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\macbook.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\macbook2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\macbookair.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\pd1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\pd2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\pd3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\pd4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\phone1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\phone2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\phone3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\phone4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\phone5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\phonecase.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\projector.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\ring.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\samsung.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\samsung2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\samsung3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\samsung4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\samsungbox.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\security.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\smartwatch.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\snap.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\sonos.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\sound.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\sound2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\sound3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\tplink.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\tv.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\tv2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\tv3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\ubl.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\usb.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\vivi.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\wifi.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\xbox.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\product\xbox2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\real.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\s-banner.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\shop-banner.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\shop-banner_2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\shop-banner_3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\apple_brand.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\bass2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\bass3.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\des_1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\des_2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\des_2.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\des_3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\glass1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\glass2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\glass3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\glass4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\glass5.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\iphone_2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\iphone_3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\iphone_4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\iphone_info_1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\iphone_info_2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\nike1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\nike2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\nike3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\nike4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\nike4.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\simple_icon.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\smartwatch1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\smartwatch2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\smartwatch3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\smartwatch4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\sonos1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\sonos2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\sonos3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\sony.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\sony2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\sony3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\sony4.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\single\sony_brand.png" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h1_s1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h1_s2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h1_s3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h2_s1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h2_s2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h2_s3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h3_s1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h3_s2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h3_s3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h5_s1.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h5_s2.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\img\slider\h5_s3.jpg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\js\bootstrap-slider.min.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\js\bootstrap.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\js\bootstrap.min.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\js\countdown.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\js\jquery.fancybox.min.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\js\jquery.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\js\main.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\js\owl.carousel.min.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\js\slick.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\js\slick.min.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\js\threesixty.min.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\myaccount.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\onsale.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\outofstock.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\pin_product.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\product_extended.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\product_right_sidebar.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\product_sidebar.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\quickview.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\blanch\fonts.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\blanch\fonts\BLANCH_CAPS.svg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\font-awesome\font-awesome.min.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\font-awesome\fonts\fontawesome-webfont78ce.svg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\Helvetica\fonts.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\ionicons\css\ionicons.min.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\ionicons\fonts\ionicons.svg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\PlayfairDisplay\fonts.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\PlayfairDisplay\fonts\PlayfairDisplay-Regular.svg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\simple-line-icon\css\simple-line-icons.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\simple-line-icon\css\simple-line-icons.min.css" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\simple-line-icon\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\shopgrid_v1.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\shopgrid_v2.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\shopleft_sidebar.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\shoplist.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\shopright_sidebar.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\shop_full.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\simple.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\track.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\variable.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\wishlist.html" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\wishlist_empty.html" />
+    <Content Include="Content\ImageBooks\facebook.png" />
+    <Content Include="Content\ImageBooks\p1.jpg" />
+    <Content Include="Content\ImageBooks\p12.jpg" />
+    <Content Include="Content\ImageBooks\p3.jpg" />
+    <Content Include="Content\ImageBooks\p3.png" />
+    <Content Include="Content\ImageBooks\p4.jpg" />
+    <Content Include="Content\ImageBooks\p5.jpg" />
+    <Content Include="Content\ImageBooks\p6.jpg" />
+    <Content Include="Content\ImageBooks\ps5 %282%29.jpg" />
+    <Content Include="Content\ImageBooks\temp.png" />
+    <Content Include="Content\ImageBooks\temp1.png" />
+    <Content Include="Content\ImgLaptop\acer.jpg" />
+    <Content Include="Content\ImgLaptop\acer1.jpg" />
+    <Content Include="Content\ImgLaptop\acer2.jpg" />
+    <Content Include="Content\ImgLaptop\acer3.jpg" />
+    <Content Include="Content\ImgLaptop\akko.jpg" />
+    <Content Include="Content\ImgLaptop\AL1 %281%29.jpg" />
+    <Content Include="Content\ImgLaptop\ban1.jpg" />
+    <Content Include="Content\ImgLaptop\hyperx.jpg" />
+    <Content Include="Content\ImgLaptop\laptopcate.jpg" />
+    <Content Include="Content\ImgLaptop\logo.png" />
+    <Content Include="Content\ImgLaptop\MSI1 %281%29.jpg" />
+    <Content Include="Content\ImgLaptop\msi2 %281%29.jpg" />
+    <Content Include="Content\ImgLaptop\msi3.jpg" />
+    <Content Include="Content\ImgLaptop\msi4.jpg" />
+    <Content Include="Content\ImgLaptop\msi5.jpg" />
+    <Content Include="Content\ImgLaptop\nitendo.jpg" />
+    <Content Include="Content\ImgLaptop\nocart.jpg" />
+    <Content Include="Content\ImgLaptop\pc-gaming.jpg" />
+    <Content Include="Content\ImgLaptop\pc1.jpg" />
+    <Content Include="Content\ImgLaptop\pc10.jpg" />
+    <Content Include="Content\ImgLaptop\pc11.jpg" />
+    <Content Include="Content\ImgLaptop\pc12.jpg" />
+    <Content Include="Content\ImgLaptop\pc13.jpg" />
+    <Content Include="Content\ImgLaptop\pc14.jpg" />
+    <Content Include="Content\ImgLaptop\pc15.jpg" />
+    <Content Include="Content\ImgLaptop\pc16.jpg" />
+    <Content Include="Content\ImgLaptop\pc17.jpg" />
+    <Content Include="Content\ImgLaptop\pc18.jpg" />
+    <Content Include="Content\ImgLaptop\pc19.jpg" />
+    <Content Include="Content\ImgLaptop\pc2.jpg" />
+    <Content Include="Content\ImgLaptop\pc20.jpg" />
+    <Content Include="Content\ImgLaptop\pc3 %281%29.jpg" />
+    <Content Include="Content\ImgLaptop\pc4 %281%29.jpg" />
+    <Content Include="Content\ImgLaptop\pc4.jpg" />
+    <Content Include="Content\ImgLaptop\pc5.jpg" />
+    <Content Include="Content\ImgLaptop\pc6.jpg" />
+    <Content Include="Content\ImgLaptop\pc7.jpg" />
+    <Content Include="Content\ImgLaptop\pc8.jpg" />
+    <Content Include="Content\ImgLaptop\pc9.jpg" />
+    <Content Include="Content\ImgLaptop\pccate.jpg" />
+    <Content Include="Content\ImgLaptop\ps5 %281%29.jpg" />
+    <Content Include="Content\ImgLaptop\ps5 %282%29.jpg" />
+    <Content Include="Content\ImgLaptop\QNL %282%29.png" />
+    <Content Include="Content\ImgLaptop\QNL.png" />
+    <Content Include="Content\ImgLaptop\rog1 %281%29.jpg" />
+    <Content Include="Content\ImgLaptop\rog3.jpg" />
+    <Content Include="Content\ImgLaptop\rog4.jpg" />
+    <Content Include="Content\ImgLaptop\rog5.jpg" />
+    <Content Include="Content\ImgLaptop\success.jpg" />
+    <Content Include="Content\ImgLaptop\TUF %281%29.jpg" />
+    <Content Include="Content\ImgLaptop\TUF.jpg" />
+    <Content Include="Content\js\bootstrap-slider.min.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\countdown.js" />
+    <Content Include="Content\js\jquery.fancybox.min.js" />
+    <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\owl.carousel.min.js" />
+    <Content Include="Content\js\slick.js" />
+    <Content Include="Content\js\slick.min.js" />
+    <Content Include="Content\js\threesixty.min.js" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\bootstrap-slider.css.map" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\fonts\slick.eot" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\fonts\slick.ttf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\fonts\slick.woff" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\css\style.css.map" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap-slider.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_alerts.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_center-block.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_forms.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_grid.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_hide-text.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_image.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_labels.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_nav-vertical-align.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_opacity.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_panels.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_progress-bar.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_reset-filter.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_resize.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_responsive-visibility.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_size.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_tab-focus.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_text-overflow.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\mixins\_vendor-prefixes.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_alerts.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_badges.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_breadcrumbs.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_button-groups.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_buttons.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_carousel.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_close.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_code.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_component-animations.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_dropdowns.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_forms.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_glyphicons.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_grid.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_input-groups.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_jumbotron.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_labels.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_list-group.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_media.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_mixins.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_modals.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_navbar.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_navs.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_normalize.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_pager.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_pagination.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_panels.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_popovers.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_print.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_progress-bars.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_responsive-embed.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_responsive-utilities.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_scaffolding.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_tables.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_theme.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_thumbnails.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_tooltip.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_type.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_utilities.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_variables.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\bootstrap\_wells.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Ecommerce\_cart.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Ecommerce\_checkout.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Ecommerce\_item-view-templates.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Ecommerce\_newsletter.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Ecommerce\_single.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Elements\_404.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Elements\_about.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Elements\_banner.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Elements\_blog.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Elements\_contact.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Elements\_icon-progress-bar.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Elements\_popup.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Elements\_slide.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Layout\_commingsoon.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Layout\_footers.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Layout\_header.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Layout\_homepages.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Layout\_page.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Responsive\_desktop.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Responsive\_fullHd.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Responsive\_maxDesktop.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Responsive\_maxmobile.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Responsive\_maxtable.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Responsive\_smallMobile.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Responsive\_table.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\blanch\fonts\BLANCH_CAPS.eot" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\blanch\fonts\BLANCH_CAPS.ttf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\blanch\fonts\BLANCH_CAPS.woff" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\font-awesome\fonts\fontawesome-webfont78ce.ttf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\font-awesome\fonts\fontawesome-webfont78ce.woff" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\Helvetica\helvetica-neue-lt-std-45-light.otf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\Helvetica\HelveticaNeueLTStd-Bd.otf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\Helvetica\HelveticaNeueLTStd-BdIt.otf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\Helvetica\HelveticaNeueLTStd-Lt.otf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\Helvetica\HelveticaNeueLTStd-LtIt.otf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\Helvetica\HelveticaNeueLTStd-Md.otf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\Helvetica\HelveticaNeueLTStd-MdIt.otf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\Helvetica\HelveticaNeueLTStd-Roman.otf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\ionicons\fonts\ionicons.eot" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\ionicons\fonts\ionicons.ttf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\ionicons\fonts\ionicons.woff" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\PlayfairDisplay\fonts\PlayfairDisplay-Regular.eot" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\PlayfairDisplay\fonts\PlayfairDisplay-Regular.ttf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\PlayfairDisplay\fonts\PlayfairDisplay-Regular.woff" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\simple-line-icon\fonts\Simple-Line-Icons.eot" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\simple-line-icon\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\simple-line-icon\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\Vendor\simple-line-icon\fonts\Simple-Line-Icons.woff2" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\_base.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\_ecommerce.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\_elements.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\_layout.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\_mixin.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\_reset.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\_responsive.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\_variable.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\components\_vendor.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\style.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\_bootstrap.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\_mixins.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\_rules.scss" />
+    <Content Include="Content\E-come_v1.0.0\E-Come\sass\_variables.scss" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Content\css\bootstrap-slider.css.map" />
+    <Content Include="Content\css\fonts\slick.eot" />
+    <Content Include="Content\css\fonts\slick.ttf" />
+    <Content Include="Content\css\fonts\slick.woff" />
+    <Content Include="Content\css\style.css.map" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\ShopFull.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\ShoppingCartController\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
+    <Content Include="Views\Home\GetCategory.cshtml" />
+    <Content Include="Views\Home\GetProductByCategory.cshtml" />
+    <Content Include="Views\ShoppingCart\ConfirmOrder.cshtml" />
+    <Content Include="Views\ShoppingCart\SelectedProduct.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Account\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Content\E-come_v1.0.0\E-Come\sass\components\Mixins\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56911</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44331/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

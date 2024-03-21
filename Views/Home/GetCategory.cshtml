@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Shop.Models.Category>
+
+@{
+    ViewBag.Title = "GetCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetCategory</h2>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@Html.ActionLink(item.CategoryName, "GetProductByCategory/" + item.Id, "Home") </li>
+    }
+</ul>
+

@@ -1,0 +1,162 @@
+﻿
+@model IEnumerable<Shop.Models.CartItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .btn {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .btn-update {
+        background-color: #008CBA;
+    }
+</style>
+<div class="container container-240">
+
+    <div class="checkout">
+        <ul class="breadcrumb v3">
+            <li><a href="#">Home</a></li>
+            <li class="active">Cart</li>
+        </ul>
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="shopping-cart bd-7">
+                    <div class="cmt-title text-center abs">
+                        <h1 class="page-title v2">Giỏ Hàng</h1>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table cart-table">
+
+                            @foreach (var item in Model)
+                            {
+                                <tbody>
+                                    <tr class="item_cart">
+                                        <td class="product-name flex align-center">
+                                            <a href="@Url.Action("DeleteCart","ShoppingCart", new { id = item.Id })" class="btn-del"><i class="ion-ios-close-empty"></i></a>
+                                            <div class="product-img">
+                                                <img src="~/Content/ImgLaptop/@item.Image" alt="Futurelife">
+                                            </div>
+                                            <div class="product-info">
+                                                <a href="#" title="">@item.Title </a>
+                                            </div>
+                                        </td>
+                                        @using (Html.BeginForm("UpdateCart", "ShoppingCart", new { id = item.Id }))
+                                        {
+                                            <td class="bcart-quantity single-product-detail">
+                                                <div class="single-product-info">
+                                                    <input type="number" @*@step="1" @*@ min="1" max="999" name="txtQuantity" value="@item.Quantity" title="Qty" style="border-style:double" size="6">
+                                                </div>
+                                            </td>
+                                            <td class="total-price">
+                                                <p class="price">@String.Format("{0:0,0}", item.Price) VNĐ </p>
+                                            </td>
+                                            <td> <input type="submit" class="btn btn-update" value="Cập nhật" /></td>
+                                        }
+
+
+                                    </tr>
+
+                                </tbody>
+                            }
+
+
+                        </table>
+                    </div>
+                    <div class="table-cart-bottom">
+
+                        @*<form class="form_coupon" action="#" method="post">
+                    <input type="email" value="" placeholder="Coupon code" name="EMAIL" id="mail" class="newsletter-input form-control">
+                    <div class="input-icon">
+                        <img src="img/coupon-icon.png" alt="">
+                    </div>
+                    <button id="subscribe2" class="button_mini btn" type="submit">
+                        Apply coupon
+                    </button>
+                </form>*@
+
+                        @*<a href="@Url.Action("UpdateCart", "ShoppingCart")" class="btn btn-update">Update cart</a>*@
+                    </div>
+
+                </div>
+                <br >
+                    <style >
+                    button {
+                        background-color: #4CAF50; /* Màu nền */
+                        border: none; /* Không viền */
+                        color: white; /* Màu chữ */
+                        padding: 12px 24px; /* Kích thước */
+                        text-align: center; /* Canh giữa */
+                        text-decoration: none; /* Không gạch chân */
+                        display: inline-block; /* Hiển thị dạng khối */
+                        font-size: 16px; /* Cỡ chữ */
+                        margin: 4px 2px; /* Khoảng cách */
+                        cursor: pointer; /* Con trỏ chuột */
+                    }
+                </style>
+                <button onclick="location.href='@Url.Action("ShopFull", "Home")'">@Html.ActionLink("Tiếp Tục Mua Sắm", "ShopFull", "Home", null, new { @style = "display:none;" })Tiếp Tục Mua Sắm</button>
+
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="cart-total bd-7">
+                    <div class="cmt-title text-center abs">
+                        <h1 class="page-title v3">Cart totals</h1>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="shop_table">
+                            <tbody>
+                                <tr class="cart-subtotal">
+                                    <th>Subtotal</th>
+                                    <td>@ViewBag.Tongtien VNĐ</td>
+                                </tr>
+                                <tr class="cart-shipping">
+                                    <th>Vận chuyển</th>
+                                    <td class="td">
+                                        <ul class="shipping">
+                                            <li>
+                                                <input type="radio" name="gender" value="Flat" id="radio1" checked="checked">
+                                                <label for="radio1">Flat rate : $ 12</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="gender" value="Free" id="radio2">
+                                                <label for="radio2">Free Shipping</label>
+                                            </li>
+                                        </ul>
+                                        <a href="#" class="calcu">Calculate shipping</a>
+                                    </td>
+                                </tr>
+                                <tr class="order-total">
+                                    <th>Tổng : </th>
+                                    <td>@String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cart-total-bottom">
+                        @* <a href="" class="btn-gradient btn-checkout">Proceed to checkout</a> @Html.ActionLink("ĐẶT HÀNG", "Order", "ShoppingCart")*@
+                        <button class="btn-gradient btn-checkout" onclick="window.location.href='@Url.Action("Order", "ShoppingCart")'">Proceed to checkout</button>
+                    </div>
+                    <div class="sign-in-divider">
+                        <span>or</span>
+                    </div>
+                    <div class="cart-total-bottom pp-checkout">
+                        <a href="#"><img src="img/checkoutpp.jpg" alt="" class="img-responsive"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
